@@ -27,13 +27,14 @@ test_dir = 'test/'
 
 # create train / test (80/20) split
 if len(listdir(test_dir)) == 0:
-    print("Start create train / test split")
     files = listdir(train_dir)
-    for _ in range(int(len(listdir(train_dir)) * 0.2)):
+    length_train_dir = int(len(listdir(train_dir)) * 0.2)
+    for i in range(length_train_dir):
         file = random.choice(files)  # randomize
         files.remove(file)
         shutil.move(train_dir + file, test_dir)
-    print("Created train / test split")
+        print(f'Move file {i+1} from {length_train_dir} files')
+exit()
 
 # load / create train data
 # TARGET: [isCat, isDog]
@@ -134,6 +135,6 @@ def test():
 
 
 # train the model in order to test it afterwards for the evaluation
-for epoch in range(1, 20):
+for epoch in range(1, 30):
     train(epoch)
 test()  # it would also be possible to evaluate the model after each epoch
