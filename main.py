@@ -34,7 +34,6 @@ if len(listdir(test_dir)) == 0:
         files.remove(file)
         shutil.move(train_dir + file, test_dir)
         print(f'Move file {i+1} from {length_train_dir} files')
-exit()
 
 # load / create train data
 # TARGET: [isCat, isDog]
